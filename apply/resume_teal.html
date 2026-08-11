@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>resume_teal.html</title>
+<style>
+  @page { size: letter; margin: 36pt 39pt 36pt 39.8pt; }
+
+  :root {
+    --teal:  #1c8b7d;
+    --ink:   #232323;
+    --dark:  #1a1a1a;
+    --muted: #5b5b5b;
+    --rule:  #cccccc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.9pt;
+    line-height: 12.75pt;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ---------- header ---------- */
+  .name {
+    font-size: 23pt;
+    line-height: 29pt;
+    letter-spacing: 0.0098em;
+    font-weight: bold;
+    color: var(--dark);
+  }
+  .name-bar {
+    width: 34.4pt;
+    height: 2.3pt;
+    background: var(--teal);
+    margin-top: 3.1pt;
+  }
+  .tagline {
+    font-size: 9.7pt;
+    font-weight: bold;
+    color: var(--teal);
+    margin-top: 3pt;
+  }
+  .contact {
+    font-size: 8.4pt;
+    line-height: 10.5pt;
+    color: var(--muted);
+    margin-top: 3pt;
+  }
+
+  /* ---------- sections ---------- */
+  .section-head {
+    font-size: 9.8pt;
+    font-weight: bold;
+    color: var(--teal);
+    letter-spacing: 0.18em;
+    margin-top: 6.75pt;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .section-head::after {
+    content: "";
+    display: block;
+    height: 0.75pt;
+    background: var(--teal);
+    margin-top: 2.25pt;
+  }
+
+  table.skills + .section-head,
+  .certs + .section-head { margin-top: 6.05pt; }
+
+  .summary { text-align: justify; margin-top: 3pt; }
+
+  /* ---------- skills ---------- */
+  table.skills {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3pt;
+  }
+  table.skills td { padding: 0; vertical-align: top; }
+  table.skills tr + tr td { padding-top: 1.34pt; }
+  table.skills td.k { width: 129.4pt; font-weight: bold; }
+
+  .certs { margin-top: 3pt; }
+
+  /* ---------- experience ---------- */
+  .entry { margin-top: 4.5pt; break-inside: avoid; page-break-inside: avoid; }
+  .entry-head { display: flex; justify-content: space-between; gap: 10pt; }
+  .role { flex: 1; font-weight: bold; color: var(--dark); }
+  .date { font-size: 8.89pt; color: var(--muted); white-space: nowrap; }
+
+  ul { list-style: none; margin-top: 1.5pt; }
+  li { position: relative; padding-left: 11.2pt; margin-top: 2.25pt; }
+  li:first-child { margin-top: 0; }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5.25pt;
+    width: 3pt;
+    height: 3pt;
+    background: var(--teal);
+  }
+
+  /* ---------- education ---------- */
+  .edu-entry { margin-top: 1.5pt; break-inside: avoid; page-break-inside: avoid; }
+  .edu-entry:first-of-type { margin-top: 3pt; }
+
+  /* ---------- footer ---------- */
+  .footer { margin-top: 6.8pt; break-inside: avoid; page-break-inside: avoid; }
+  .footer::before {
+    content: "";
+    display: block;
+    height: 0.75pt;
+    background: var(--rule);
+    margin-bottom: 3.8pt;
+  }
+  .footer p {
+    font-size: 8.4pt;
+    line-height: 10.5pt;
+    font-style: italic;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="name">Venura Wijenayake</div>
+<div class="name-bar"></div>
+<div class="tagline">Technical Support Specialist&nbsp; · &nbsp;Tier 1 Desktop, Hardware &amp; Production-Systems Support</div>
+<div class="contact">Sacramento, CA&nbsp; · &nbsp;~25 min from Dixon&nbsp; · &nbsp;(916) 674-0801 (preferred, text)&nbsp; · &nbsp;(415) 374-1807 (call)&nbsp; · &nbsp;dev.venura@gmail.com&nbsp; · &nbsp;linkedin.com/in/venura-wijenayake&nbsp; · &nbsp;github.com/Venura-Wijenayake</div>
+
+<div class="section-head">SUMMARY</div>
+<p class="summary">Technical support specialist and Computer Science graduate, ITIL 4 Foundation certified and CompTIA A+ (Core 1), with hands-on Tier 1/2 help desk, hardware repair, and Windows and macOS desktop support under SLA. Dependable on a fixed early schedule — a former sole-keyholder closing manager who has worked full shifts in cold-storage, food-safety environments. Local to Sacramento (~25 min from Dixon) and available immediately for onsite support, keeping production and manufacturing systems running and minimizing downtime.</p>
+
+<div class="section-head">TECHNICAL SKILLS</div>
+<table class="skills">
+  <tr><td class="k">Help Desk &amp; Support</td><td>Tier 1 Help Desk, Ticket Ownership &amp; Escalation, Incident Management, Remote Support, Customer Service, SLA Response</td></tr>
+  <tr><td class="k">Operating Systems</td><td>Windows 10/11, Windows Server (fundamentals), Linux, macOS</td></tr>
+  <tr><td class="k">Networking</td><td>TCP/IP, DNS/DHCP, LAN/WAN, Network Connectivity Troubleshooting, VLAN &amp; Wired/Wireless (fundamentals)</td></tr>
+  <tr><td class="k">Hardware</td><td>Diagnostics &amp; Component-Level Repair, Imaging &amp; Deployment, Desktops / Printers / Peripherals, Structured Cabling, Asset Management</td></tr>
+  <tr><td class="k">Identity &amp; Productivity</td><td>Active Directory (user/group fundamentals), Microsoft 365, Google Workspace, User Account Administration, Email &amp; Remote Access</td></tr>
+  <tr><td class="k">Process &amp; Business Tools</td><td>ITIL 4, Ticketing Systems, Documentation &amp; SOP Compliance, ERP / Inventory (POS), 10-Key, Word Processing &amp; Spreadsheets</td></tr>
+</table>
+
+<div class="section-head">CERTIFICATIONS</div>
+<p class="certs">CompTIA A+ (Core 1)&nbsp;&nbsp; · &nbsp;&nbsp;ITIL 4 Foundation&nbsp;&nbsp; · &nbsp;&nbsp;LPI Linux Essentials</p>
+
+<div class="section-head">EXPERIENCE</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div class="role">PC Technician — Natomas Unified School District (via Robert Half), Sacramento, CA</div>
+    <div class="date">Jul 2026 – Aug 2026</div>
+  </div>
+  <ul>
+    <li>Imaged, deployed, and break-fixed 40+ Windows PCs, Macs, and Chromebooks per week for a district-wide device refresh, meeting deadline-driven daily targets.</li>
+    <li>Performed same-day hardware repair (component swaps, reimaging) and provisioned devices and user accounts via Google Admin console with accurate asset tracking.</li>
+    <li>Maintained reliable daily throughput on a fixed early schedule in a fast-paced, deadline-driven environment.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div class="role">Computer Hardware Technician — Softlogic PLC (Dell Authorized Service Center), Colombo, Sri Lanka</div>
+    <div class="date">Dec 2019 – Sep 2020</div>
+  </div>
+  <ul>
+    <li>Owned Tier 1/2 tickets end-to-end for 15–25+ Windows systems weekly under SLA — intake, troubleshooting, and escalation with full documentation.</li>
+    <li>Performed component-level repair (BIOS, RAM, NIC, PSU), OS imaging, and driver installs in a Windows environment; built and configured 20+ PCs including server-rack work.</li>
+    <li>Handled structured cabling, LAN connectivity, and peripheral integration; processed RMAs to company quality standards.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div class="role">Paraeducator / Classroom IT Support — Folsom Cordova Unified School District, Rancho Cordova, CA</div>
+    <div class="date">Dec 2025 – Present</div>
+  </div>
+  <ul>
+    <li>Provide first-line support for Windows devices, Chromebooks, printers, and network connectivity; own issues and escalate to district IT per ticketing process.</li>
+    <li>Respond to requests and troubleshoot LAN and login/access issues, translating technical fixes for non-technical staff in a regulated environment.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div class="role">Closing Manager — Grocery Outlet, Sacramento, CA</div>
+    <div class="date">Sep 2024 – Dec 2025</div>
+  </div>
+  <ul>
+    <li>Held sole close-of-business accountability for a high-volume store — supervised 8–12 staff, reconciled cash, and secured the premises on a fixed nightly schedule with zero oversight.</li>
+    <li>Operated POS / inventory (ERP-style) systems and 10-key daily; followed SOPs and completed accurate end-of-day reporting.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head">
+    <div class="role">Fresh Cut Clerk — Safeway, Sacramento, CA</div>
+    <div class="date">May 2023 – Sep 2024</div>
+  </div>
+  <ul>
+    <li>Worked a fast-paced fresh-food production floor (cutting, packing, labeling) in refrigerated cold-storage under strict sanitation and food-safety standards — a coordinated, throughput-driven operation where steady flow kept output moving; lifted stock up to 50 lbs.</li>
+  </ul>
+</div>
+
+<div class="section-head">EDUCATION</div>
+
+<div class="edu-entry">
+  <div class="entry-head">
+    <div class="role">B.S., Computer Science — Western Governors University</div>
+    <div class="date">June 2025</div>
+  </div>
+</div>
+
+<div class="edu-entry">
+  <div class="entry-head">
+    <div class="role">Sacramento City College — Computer Science coursework · GPA 3.6 · Phi Theta Kappa Honor Society</div>
+    <div class="date">2021 – 2023</div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>U.S. permanent resident (no sponsorship required)&nbsp; · &nbsp;References available upon request</p>
+</div>
+
+</body>
+</html>
