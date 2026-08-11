@@ -225,10 +225,10 @@
 
   <div class="fallback">
     <h2>If the day collapses, do only this</h2>
-    <p><strong>The Robert Half call and the two emails. 25 minutes total.</strong> Warm channels convert at 11–32× cold applications. Everything else on this page is worth less than those three conversations.</p>
+    <p><strong>File the CalCareers IT Associate exam. 45 minutes.</strong> Free, continuous filing, and your degree alone qualifies you — no two years of experience needed. Eligibility then sits there for 12 months doing nothing but making you reachable. It is the one item here that pays off even if you touch nothing else for a month.</p>
   </div>
 
-  <div class="phase">First 30 minutes <span>momentum, then the phone</span></div>
+  <div class="phase">First 30 minutes <span>clear the decks</span></div>
   <div class="list" id="list-1"></div>
 
   <div class="phase">Mid-day <span>the tier correction — highest dollar value</span></div>
@@ -250,12 +250,10 @@
 <script>
 (function () {
   var TASKS = [
-    { g:1, pri:"anchor", t:"Fix the Natomas date on your resume", dur:"5 min",
-      why:"It currently reads <strong>Jul 2026 – Present</strong> for a contract that ended. That's a factual error on the document you're actively sending. Robert Half could verify it." },
-    { g:1, pri:"anchor", t:"Email FCUSD IT + Superior Farms/RH", dur:"15 min",
-      why:"Two short notes. FCUSD: you want the next Specialist I opening and what closed the gap. Superior Farms: tell me when Tech Ops reopens. Runner-up status is the warmest lead that exists and it decays." },
-    { g:1, pri:"anchor", t:"Call Robert Half — correct the routing", dur:"10 min · at break",
-      why:"Not another email. Say: Tier 2/3, tech ops or plant IT, $30+ band, <strong>open to contract and contract-to-hire</strong>, can start immediately, runner-up at Superior Farms. Ask for the contract desk too — Brooke is permanent placement, so you're invisible to half their inventory." },
+    { g:1, pri:"anchor", t:"Fix the Natomas date on your resume", dur:"done", done:true,
+      why:"<strong>Done.</strong> Now reads <strong>Jul 2026 – Aug 2026</strong>, and the three bullets moved to past tense to match. Nothing splits across the page break any more. Source lives at <strong>apply/resume_teal.html</strong>, so the next tailored version is an edit, not a rebuild." },
+    { g:1, pri:"opt", t:"Email FCUSD IT + Superior Farms", dur:"15 min · parked",
+      why:"<strong>You're doing these later.</strong> FCUSD: you want the next Specialist I opening and what closed the gap. Superior Farms: tell me when Tech Ops reopens. Still the warmest channel you own, and it still decays — but it keeps until you want it." },
 
     { g:2, pri:"anchor", t:"File the CalCareers IT Associate exam", dur:"45–60 min",
       why:"Free, online, continuous filing. Your CS degree meets the minimum qualification through the education path — <strong>you don't need the two years of experience.</strong> Eligibility lasts 12 months. You ranked 1 in Data Analytics before, cold." },
@@ -276,10 +274,10 @@
     { g:4, pri:"core", t:"Book the DMV behind-the-wheel test", dur:"10 min",
       why:"California has <strong>no mandatory permit-holding period for adults 18+</strong>. Book it for late this month — having the date fixed is what makes the practice serious." },
     { g:4, pri:"opt", t:"Plan CompTIA A+ Core 2", dur:"15 min",
-      why:"Core 1 alone is worth nothing — A+ is only awarded when both cores pass, same version series. Your investment has a shelf life. ~40 hrs, ~$260. Pick an exam date." }
+      why:"Core 1 alone is worth nothing — A+ is only awarded when both cores pass, same version series. Your investment has a shelf life. ~40 hrs, ~$260. Pick an exam date. <strong>Brooke named the gap in writing: “more experience with networking and systems.”</strong> That points at Network+ next — but finish Core 2 first, it is the one with an expiry." }
   ];
 
-  var KEY = "vw-dayplan-v1";
+  var KEY = "vw-dayplan-v2";
   var state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
@@ -290,7 +288,7 @@
 
   TASKS.forEach(function (task, i) {
     var id = "t" + i;
-    var st = state[id] || {};
+    var st = state[id] || (task.done ? { done: true } : {});
 
     var el = document.createElement("div");
     el.className = "task" + (st.done ? " done" : "");

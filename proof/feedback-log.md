@@ -21,6 +21,17 @@ When someone gives feedback, add a row. When you **ship a change because of it**
 
 ---
 
+## Hiring feedback (roles, interviews, recruiters)
+
+Rejection feedback that names a *specific* gap is rare and worth more than the rejection costs you.
+Log it verbatim — it tells you what to close, and it's the difference between guessing and knowing.
+
+| Date | Role / company | Who | Feedback (verbatim) | What it says to close |
+|---|---|---|---|---|
+| 2026-08-11 | Tech Ops Technician, Superior Farms (direct hire) | Brooke Lambert, PHR — VP / Director of Permanent Services, Robert Half Technology | "The other candidate had more experience with **networking and systems**." (Reply to a direct ask for what closed the gap, after finishing final two.) | Networking + systems administration — named, not inferred. Relevant to cert ordering (Network+) and to which bullets lead on the résumé. |
+
+---
+
 ## Testimonial candidates
 
 When someone says something genuinely positive and specific, ask: *"Mind if I quote you on that?"*

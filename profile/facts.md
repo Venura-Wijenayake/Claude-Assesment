@@ -46,8 +46,11 @@ campaign **defensible**: the thing you were most worried about losing.
 
 ## Recent signal (use in interviews)
 - Reached the **final two** for a direct-hire Tech Ops role (Superior Farms, via Robert Half /
-  recruiter Brooke). Lost to a candidate with "a little more experience." Recruiter will keep me in
-  mind. **Read: I'm already competitive at the final round; the gap is demonstrable proof, not ability.**
+  recruiter Brooke Lambert). Recruiter will keep me in mind. **Read: I'm already competitive at the
+  final round; the gap is demonstrable proof, not ability.**
+- **The gap is named, not guessed** (Brooke, 2026-08-11, in writing): the candidate who won had
+  *"more experience with **networking and systems**."* Not soft skills, not culture, not the degree.
+  See `proof/feedback-log.md`.
 
 ---
 
