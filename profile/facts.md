@@ -29,8 +29,10 @@ campaign **defensible**: the thing you were most worried about losing.
 - LPI Linux Essentials
 
 ## Work history (verifiable)
-- **Natomas USD — PC Technician** (current, contract via Robert Half). Real, current IT experience.
-- **Folsom Cordova USD** — Paraeducator / classroom IT support
+- **Folsom Cordova USD — Paraeducator** (**CURRENT**). Weekdays 8:15am–2:45pm; ~7.5 hrs/day with
+  commute. Low cognitive load — passive supervision, not intensive engagement.
+- **Natomas USD — PC Technician** (contract via Robert Half). Real IT experience.
+  ⚠️ *Confirm whether this is past or concurrent.*
 - **Dell Authorized Service Center** — Tier 1/2 hardware support
 - **Grocery Outlet** — Closing manager
 - **Safeway** — Fresh Cut
