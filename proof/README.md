@@ -11,6 +11,11 @@ and public code portfolios (34%), while degree/academic focus came in at 23%. In
 toward **proof over promise**: links, demos, metrics.
 Your CS degree is table-stakes now. **The proof is the differentiator.**
 
+> ⚠️ **Don't quote those percentages verbatim in an interview.** The primary source was
+> unreachable during research, so the figures came via secondary summaries. The *direction* is
+> well-supported and safe to assert ("portfolios now outrank internships for many hiring managers");
+> the exact numbers need confirming against the CodePath report first. See `sources.md`.
+
 ---
 
 ## Step 0 — Instrument BEFORE you promote (do this first, it's ~1 hour)

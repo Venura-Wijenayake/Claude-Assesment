@@ -29,6 +29,7 @@ real people actually use — which is the one thing that closes the gap for the 
 | **`proof/README.md`** | ⭐ **The centerpiece.** How to get 10–50 real users, channel by channel, with rules. |
 | **`proof/feedback-log.md`** | Every piece of real user feedback, dated. This *is* portfolio material. |
 | **`apply/README.md`** | Résumé framing, honest bullet patterns, interview talk-track, the Brooke message. |
+| **`sources.md`** | Every figure in this workspace + how much weight it can bear (🟢/🟡/🔴). |
 
 ---
 
@@ -79,9 +80,9 @@ removes a real risk, keeps every real project. See `apply/README.md` §1.
 
 ## Reality checks worth keeping in view
 
-- **A CS degree is table-stakes in 2026, not a differentiator.** Portfolios were the **#1 hiring
-  criterion (38%)** in a 2025 survey of 200+ engineering leaders — above internships. Your instinct
-  about proof was right.
+- **A CS degree is table-stakes in 2026, not a differentiator.** Portfolios ranked as the **#1 hiring
+  criterion** in a 2025 survey of 200+ engineering leaders — above internships. Your instinct about
+  proof was right. *(Exact percentages need primary-source confirmation before quoting — see `sources.md`.)*
 - **Junior SWE is a medium-term goal**, not next month's paycheck. **Data analyst** is the more
   attainable technical target (entry ~$25–35/hr, SQL is the main gap).
 - **Be honestly small.** *"Piloted with 8 job-seekers over 2 weeks"* beats a vague *"used by many"* —

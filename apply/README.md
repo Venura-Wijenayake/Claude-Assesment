@@ -33,8 +33,10 @@ your background wasn't the issue. Fix the *framing* and go acquire the specific 
   Demonstrated competencies matter more than years.
 - **Quantify the older roles too** — Dell Tier 1/2, paraeducator IT, Grocery Outlet closing manager.
   Volume handled, turnaround, teams coordinated. **Depth of quantified competency offsets fewer years.**
-- Target **50–60% of bullets quantified.** Quantified bullets get ~3.2× more callbacks; resumes with
-  hard metrics see up to ~40% higher interview chance.
+- Target **50–60% of bullets quantified.** Quantified bullets reportedly get ~3.2× more callbacks and
+  resumes with hard metrics up to ~40% higher interview chance — *these two figures come from
+  secondary career sites, not a directly verified primary study, so treat them as directional
+  motivation rather than facts to cite.* The underlying practice is sound and universally recommended.
 - **Use contract-to-hire deliberately as a bridge** — it's designed to convert, accessible with
   non-traditional experience, and it's already your channel.
 
