@@ -1,0 +1,398 @@
+<title>Day Plan — Job Search Ops</title>
+<style>
+  :root {
+    --ground:      #F4F6F7;
+    --surface:     #FFFFFF;
+    --surface-alt: #EAEEF0;
+    --ink:         #14191E;
+    --ink-soft:    #4A555E;
+    --ink-faint:   #7A868F;
+    --rule:        #D6DDE1;
+    --accent:      #0E6E62;
+    --accent-soft: #D3E7E3;
+    --signal:      #B4400C;
+    --signal-soft: #F7E2D6;
+    --done:        #6B7780;
+    --shadow:      0 1px 2px rgba(20,25,30,.06), 0 4px 14px rgba(20,25,30,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:      #0E1417;
+      --surface:     #161E23;
+      --surface-alt: #1D272D;
+      --ink:         #E6EDF0;
+      --ink-soft:    #A3B1B9;
+      --ink-faint:   #71818A;
+      --rule:        #2A363D;
+      --accent:      #4FC4B2;
+      --accent-soft: #123832;
+      --signal:      #F08A52;
+      --signal-soft: #3A2114;
+      --done:        #6B7780;
+      --shadow:      0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:      #0E1417;
+    --surface:     #161E23;
+    --surface-alt: #1D272D;
+    --ink:         #E6EDF0;
+    --ink-soft:    #A3B1B9;
+    --ink-faint:   #71818A;
+    --rule:        #2A363D;
+    --accent:      #4FC4B2;
+    --accent-soft: #123832;
+    --signal:      #F08A52;
+    --signal-soft: #3A2114;
+    --done:        #6B7780;
+    --shadow:      0 1px 2px rgba(0,0,0,.3), 0 4px 14px rgba(0,0,0,.25);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 16px/1.55 ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ---- header ---- */
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 18px; margin-bottom: 8px; }
+  .eyebrow {
+    font: 600 11px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font: 600 clamp(30px, 5.2vw, 42px)/1.08 Georgia, "Iowan Old Style", "Times New Roman", serif;
+    letter-spacing: -.015em; margin: 0 0 10px; text-wrap: balance;
+  }
+  .sub { color: var(--ink-soft); font-size: 15px; margin: 0; max-width: 62ch; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 16px;
+    font: 500 12.5px/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    color: var(--ink-faint); letter-spacing: .02em;
+  }
+
+  /* ---- energy ---- */
+  .energy {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    margin: 26px 0 8px; padding: 14px 16px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+  }
+  .energy-label {
+    font: 600 11px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
+    margin-right: 4px;
+  }
+  .energy button {
+    font: 500 13.5px/1 inherit; padding: 7px 13px; cursor: pointer;
+    background: var(--surface-alt); color: var(--ink-soft);
+    border: 1px solid var(--rule); border-radius: 999px;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .energy button:hover { border-color: var(--accent); color: var(--ink); }
+  .energy button[aria-pressed="true"] {
+    background: var(--accent); border-color: var(--accent); color: var(--ground); font-weight: 600;
+  }
+  .energy-note { flex-basis: 100%; font-size: 13px; color: var(--ink-faint); margin: 2px 0 0; }
+
+  /* ---- fallback ---- */
+  .fallback {
+    margin: 22px 0 34px; padding: 18px 20px;
+    background: var(--signal-soft); border: 1px solid var(--signal);
+    border-radius: 10px;
+  }
+  .fallback h2 {
+    font: 600 12px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--signal);
+    margin: 0 0 9px;
+  }
+  .fallback p { margin: 0; font-size: 14.5px; color: var(--ink); }
+  .fallback strong { font-weight: 650; }
+
+  /* ---- blocks ---- */
+  .phase {
+    font: 600 11.5px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-faint);
+    margin: 34px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  }
+  .phase span { color: var(--ink-faint); font-weight: 500; letter-spacing: .04em; text-transform: none; }
+
+  .list { display: flex; flex-direction: column; gap: 12px; }
+
+  .task {
+    position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0 14px;
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 15px 17px 15px 19px; box-shadow: var(--shadow);
+    transition: opacity .2s;
+  }
+  .task::before {
+    content: ""; position: absolute; left: 0; top: 12px; bottom: 12px;
+    width: 3px; border-radius: 0 3px 3px 0; background: var(--rule);
+  }
+  .task[data-pri="anchor"]::before { background: var(--signal); }
+  .task[data-pri="core"]::before   { background: var(--accent); }
+
+  .task input[type="checkbox"] {
+    appearance: none; width: 19px; height: 19px; margin: 3px 0 0; cursor: pointer;
+    border: 1.5px solid var(--ink-faint); border-radius: 5px; background: transparent;
+    display: grid; place-content: center; transition: background .15s, border-color .15s;
+  }
+  .task input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
+  .task input[type="checkbox"]:checked::after {
+    content: ""; width: 5px; height: 9px; margin-top: -2px;
+    border: solid var(--surface); border-width: 0 2px 2px 0; transform: rotate(42deg);
+  }
+  .task input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .task-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+  .task h3 {
+    font: 600 16.5px/1.3 inherit; margin: 0; letter-spacing: -.005em;
+    flex: 1 1 auto; min-width: 200px;
+  }
+  .dur {
+    font: 500 11.5px/1 ui-monospace, Menlo, Consolas, monospace;
+    color: var(--ink-faint); letter-spacing: .04em; white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .tag {
+    font: 600 10px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: 4px 7px; border-radius: 4px; white-space: nowrap;
+  }
+  .tag.anchor { background: var(--signal-soft); color: var(--signal); }
+  .tag.core   { background: var(--accent-soft); color: var(--accent); }
+  .tag.opt    { background: var(--surface-alt); color: var(--ink-faint); }
+
+  .why { margin: 7px 0 0; font-size: 14px; color: var(--ink-soft); max-width: 62ch; }
+  .why a { color: var(--accent); text-underline-offset: 2px; }
+
+  .note {
+    margin-top: 10px; padding: 8px 11px; min-height: 34px;
+    background: var(--surface-alt); border: 1px dashed var(--rule); border-radius: 6px;
+    font-size: 13.5px; color: var(--ink); outline: none;
+  }
+  .note:empty::before { content: attr(data-ph); color: var(--ink-faint); }
+  .note:focus { border-style: solid; border-color: var(--accent); }
+
+  .task.done { opacity: .5; }
+  .task.done h3 { text-decoration: line-through; text-decoration-color: var(--done); }
+
+  .hidden { display: none !important; }
+
+  /* ---- footer ---- */
+  footer {
+    margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--rule);
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+  }
+  .count {
+    font: 500 13px/1 ui-monospace, Menlo, Consolas, monospace;
+    color: var(--ink-faint); font-variant-numeric: tabular-nums;
+  }
+  .reset {
+    font: 500 13px/1 inherit; padding: 8px 14px; cursor: pointer;
+    background: transparent; color: var(--ink-faint);
+    border: 1px solid var(--rule); border-radius: 999px;
+  }
+  .reset:hover { color: var(--signal); border-color: var(--signal); }
+  .editable-hint { font-size: 12.5px; color: var(--ink-faint); flex-basis: 100%; margin: 0; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Job Search Ops · Worksite Day</div>
+    <h1>Today's plan</h1>
+    <p class="sub">Built for a 8:15–2:45 shift where the constraint is <em>attention</em>, not tooling. Everything here survives interruption. Nothing here needs an unbroken hour.</p>
+    <div class="meta">
+      <span id="today"></span>
+      <span>Cordova High · laptop + remote desktop</span>
+    </div>
+  </header>
+
+  <div class="energy">
+    <span class="energy-label">Energy</span>
+    <button type="button" data-energy="low">Low</button>
+    <button type="button" data-energy="mid" aria-pressed="true">Medium</button>
+    <button type="button" data-energy="high">High</button>
+    <p class="energy-note" id="energyNote">Showing anchors + core work. Optional items hidden.</p>
+  </div>
+
+  <div class="fallback">
+    <h2>If the day collapses, do only this</h2>
+    <p><strong>The Robert Half call and the two emails. 25 minutes total.</strong> Warm channels convert at 11–32× cold applications. Everything else on this page is worth less than those three conversations.</p>
+  </div>
+
+  <div class="phase">First 30 minutes <span>momentum, then the phone</span></div>
+  <div class="list" id="list-1"></div>
+
+  <div class="phase">Mid-day <span>the tier correction — highest dollar value</span></div>
+  <div class="list" id="list-2"></div>
+
+  <div class="phase">If there's room <span>lower stakes, still useful</span></div>
+  <div class="list" id="list-3"></div>
+
+  <div class="phase">Tonight <span>needs focus you won't have at work</span></div>
+  <div class="list" id="list-4"></div>
+
+  <footer>
+    <span class="count" id="count"></span>
+    <button type="button" class="reset" id="reset">Clear all</button>
+    <p class="editable-hint">Every title and note is editable — click and type. Checkmarks and edits save automatically in this browser.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var TASKS = [
+    { g:1, pri:"anchor", t:"Fix the Natomas date on your resume", dur:"5 min",
+      why:"It currently reads <strong>Jul 2026 – Present</strong> for a contract that ended. That's a factual error on the document you're actively sending. Robert Half could verify it." },
+    { g:1, pri:"anchor", t:"Email FCUSD IT + Superior Farms/RH", dur:"15 min",
+      why:"Two short notes. FCUSD: you want the next Specialist I opening and what closed the gap. Superior Farms: tell me when Tech Ops reopens. Runner-up status is the warmest lead that exists and it decays." },
+    { g:1, pri:"anchor", t:"Call Robert Half — correct the routing", dur:"10 min · at break",
+      why:"Not another email. Say: Tier 2/3, tech ops or plant IT, $30+ band, <strong>open to contract and contract-to-hire</strong>, can start immediately, runner-up at Superior Farms. Ask for the contract desk too — Brooke is permanent placement, so you're invisible to half their inventory." },
+
+    { g:2, pri:"anchor", t:"File the CalCareers IT Associate exam", dur:"45–60 min",
+      why:"Free, online, continuous filing. Your CS degree meets the minimum qualification through the education path — <strong>you don't need the two years of experience.</strong> Eligibility lasts 12 months. You ranked 1 in Data Analytics before, cold." },
+    { g:2, pri:"core", t:"Sacramento County Analyst I/II — start one", dur:"45–60 min",
+      why:"$41–60/hr. Cut-offs 9/18 and 9/25. Start with <strong>Infrastructure Analyst</strong> — closest to your hands-on skills. Write the supplemental in county language, not resume language; it's scored against the bulletin. This is the tier your degree qualifies you for and the one you haven't been using." },
+    { g:2, pri:"core", t:"File IT Specialist I + IT Technician exams", dur:"30–45 min",
+      why:"Same session, same effort. Three lists means you're reachable for every department's vacancy instead of one." },
+
+    { g:3, pri:"opt", t:"Run a daily sweep", dur:"20 min",
+      why:"New chat → paste <strong>BRIEF.md</strong> → paste <strong>spokes/daily-sweep.md</strong>. Get a ranked list with warm angles flagged." },
+    { g:3, pri:"opt", t:"Open two more agency relationships", dur:"20 min",
+      why:"Insight Global and Randstad. Three agencies working beats one, and it costs you two phone calls." },
+    { g:3, pri:"opt", t:"Start free Jamf 100 training", dur:"15 min to enroll",
+      why:"The one named gap on the warmest live req (Help Desk Analyst II, macOS/Jamf). Closable in days." },
+
+    { g:4, pri:"anchor", t:"Driving practice — merges only", dur:"45 min",
+      why:"Ask the instructor for one lesson of nothing but on-ramp merges, same ramp, repeatedly. Ten in a row beats five scattered lessons. This is the highest-ROI item you own: it unlocks $28–42/hr district roles you're already qualified for." },
+    { g:4, pri:"core", t:"Book the DMV behind-the-wheel test", dur:"10 min",
+      why:"California has <strong>no mandatory permit-holding period for adults 18+</strong>. Book it for late this month — having the date fixed is what makes the practice serious." },
+    { g:4, pri:"opt", t:"Plan CompTIA A+ Core 2", dur:"15 min",
+      why:"Core 1 alone is worth nothing — A+ is only awarded when both cores pass, same version series. Your investment has a shelf life. ~40 hrs, ~$260. Pick an exam date." }
+  ];
+
+  var KEY = "vw-dayplan-v1";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var d = new Date();
+  document.getElementById("today").textContent =
+    d.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+
+  TASKS.forEach(function (task, i) {
+    var id = "t" + i;
+    var st = state[id] || {};
+
+    var el = document.createElement("div");
+    el.className = "task" + (st.done ? " done" : "");
+    el.setAttribute("data-pri", task.pri);
+
+    var cb = document.createElement("input");
+    cb.type = "checkbox";
+    cb.checked = !!st.done;
+    cb.id = id;
+
+    var body = document.createElement("div");
+
+    var head = document.createElement("div");
+    head.className = "task-head";
+
+    var h = document.createElement("h3");
+    h.contentEditable = "true";
+    h.spellcheck = false;
+    h.textContent = st.title || task.t;
+
+    var tag = document.createElement("span");
+    tag.className = "tag " + (task.pri === "opt" ? "opt" : task.pri);
+    tag.textContent = task.pri === "anchor" ? "Anchor" : task.pri === "core" ? "Core" : "Optional";
+
+    var dur = document.createElement("span");
+    dur.className = "dur";
+    dur.textContent = task.dur;
+
+    head.appendChild(h); head.appendChild(tag); head.appendChild(dur);
+
+    var why = document.createElement("p");
+    why.className = "why";
+    why.innerHTML = task.why;
+
+    var note = document.createElement("div");
+    note.className = "note";
+    note.contentEditable = "true";
+    note.spellcheck = false;
+    note.setAttribute("data-ph", "Notes / what actually happened…");
+    note.textContent = st.note || "";
+
+    body.appendChild(head); body.appendChild(why); body.appendChild(note);
+    el.appendChild(cb); el.appendChild(body);
+    document.getElementById("list-" + task.g).appendChild(el);
+
+    cb.addEventListener("change", function () {
+      el.classList.toggle("done", cb.checked);
+      state[id] = Object.assign({}, state[id], { done: cb.checked });
+      save(); tally();
+    });
+    h.addEventListener("blur", function () {
+      state[id] = Object.assign({}, state[id], { title: h.textContent.trim() });
+      save();
+    });
+    note.addEventListener("blur", function () {
+      state[id] = Object.assign({}, state[id], { note: note.textContent.trim() });
+      save();
+    });
+
+    el.setAttribute("data-pri-rank", task.pri === "anchor" ? "1" : task.pri === "core" ? "2" : "3");
+  });
+
+  var NOTES = {
+    low:  "Anchors only. Three conversations and a date fix — that's a real day when you're running on empty.",
+    mid:  "Showing anchors + core work. Optional items hidden.",
+    high: "Everything showing. Don't force it — the anchors still matter most."
+  };
+  var LIMIT = { low: 1, mid: 2, high: 3 };
+
+  function applyEnergy(level) {
+    var max = LIMIT[level];
+    document.querySelectorAll(".task").forEach(function (t) {
+      t.classList.toggle("hidden", +t.getAttribute("data-pri-rank") > max);
+    });
+    document.querySelectorAll(".energy button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-energy") === level));
+    });
+    document.getElementById("energyNote").textContent = NOTES[level];
+    document.querySelectorAll(".phase").forEach(function (p) {
+      var list = p.nextElementSibling;
+      var any = list && list.querySelector(".task:not(.hidden)");
+      p.classList.toggle("hidden", !any);
+      if (list) list.classList.toggle("hidden", !any);
+    });
+    state.__energy = level; save(); tally();
+  }
+
+  document.querySelectorAll(".energy button").forEach(function (b) {
+    b.addEventListener("click", function () { applyEnergy(b.getAttribute("data-energy")); });
+  });
+
+  function tally() {
+    var vis = document.querySelectorAll(".task:not(.hidden)");
+    var done = document.querySelectorAll(".task:not(.hidden).done");
+    document.getElementById("count").textContent = done.length + " of " + vis.length + " done";
+  }
+
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!confirm("Clear all checkmarks and notes?")) return;
+    state = {}; save(); location.reload();
+  });
+
+  applyEnergy(state.__energy || "mid");
+})();
+</script>
