@@ -25,19 +25,22 @@ shared memory between them, so nothing gets lost when a chat ends.
 
 **Morning (before 8:15)** — open the Daily Sweep spoke, ask for today's list.
 
-**During work (8:15–2:45, low engagement)** — phone work, small chunks:
+**During work (8:15–2:45, low engagement)** — laptop available, plus remote access to the desktop
+for anything heavy (coding, proof work). So this window is real working time, not just phone time:
 - Skim the sweep list, mark which to pursue
-- Fire off voice-to-text asks ("tailor me for this one," "draft a follow-up to X")
-- Send one networking message
+- Tailor and **actually submit** applications
+- Send networking messages
 - 20 min of SQL
+- Remote into the desktop if something needs real compute
 
-**Evening (home)** — the heavy lifting:
-- Review + actually submit applications
-- Interview prep
-- Proof work (weekends mostly)
+**Evening (home)** — the deep-focus work:
+- Interview prep and practice out loud
+- Proof work / building (weekends mostly)
+- Anything needing long uninterrupted attention
 
-**Rule:** don't try to do heavy judgment work during the school day. Use those hours for *volume
-and queueing*; use evenings for *decisions and submissions*.
+**Rule:** the constraint during the school day is *attention*, not tooling. Supervision is
+interruptible, so use those hours for tasks that survive interruption — searching, tailoring,
+submitting, outreach. Save anything needing an unbroken hour of thought for home.
 
 ---
 
