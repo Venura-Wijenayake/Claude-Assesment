@@ -1,0 +1,502 @@
+<title>The Non-State Search</title>
+<style>
+  /* ---------------------------------------------------------------
+     Palette: cool institutional steel + brass signal.
+     Grounded in civil-service classification bulletins — the
+     document this plan is really about reading correctly.
+     --------------------------------------------------------------- */
+  :root {
+    --ground:     #E9ECEE;
+    --surface:    #FFFFFF;
+    --surface-2:  #DFE4E7;
+    --ink:        #16202A;
+    --ink-soft:   #4C5A66;
+    --ink-faint:  #7B8894;
+    --rule:       #CDD5DA;
+    --rule-soft:  #DFE4E7;
+    --accent:     #8A6414;
+    --accent-bg:  #F0E6CE;
+    --go:         #3D6B4A;
+    --go-bg:      #DCE7DE;
+    --stop:       #9B3B2A;
+    --stop-bg:    #F1DFDA;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:     #10171D;
+      --surface:    #18222A;
+      --surface-2:  #1F2B34;
+      --ink:        #E4EAEE;
+      --ink-soft:   #A7B4BD;
+      --ink-faint:  #75838D;
+      --rule:       #2C3A44;
+      --rule-soft:  #232F38;
+      --accent:     #D6A63F;
+      --accent-bg:  #33290F;
+      --go:         #74B084;
+      --go-bg:      #1B2D21;
+      --stop:       #E08A72;
+      --stop-bg:    #331C16;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground:     #10171D;
+    --surface:    #18222A;
+    --surface-2:  #1F2B34;
+    --ink:        #E4EAEE;
+    --ink-soft:   #A7B4BD;
+    --ink-faint:  #75838D;
+    --rule:       #2C3A44;
+    --rule-soft:  #232F38;
+    --accent:     #D6A63F;
+    --accent-bg:  #33290F;
+    --go:         #74B084;
+    --go-bg:      #1B2D21;
+    --stop:       #E08A72;
+    --stop-bg:    #331C16;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 17px/1.62 ui-serif, Georgia, "Iowan Old Style", Palatino, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sans {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  }
+  .mono, .num, .dur {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 96px; }
+
+  /* ---------- masthead ---------- */
+  header {
+    padding: 52px 0 26px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .kicker {
+    font: 600 11px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  h1 {
+    font: 700 clamp(34px, 8vw, 52px)/1.03 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -.028em; margin: 0; text-wrap: balance;
+  }
+  .standfirst {
+    margin: 18px 0 0; font-size: 18px; color: var(--ink-soft); max-width: 54ch;
+  }
+  .dateline {
+    margin-top: 20px;
+    font: 500 12px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .04em; color: var(--ink-faint);
+  }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 46px; }
+  h2 {
+    font: 650 13px/1.3 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  h3 {
+    font: 650 21px/1.25 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -.012em; margin: 0; text-wrap: balance;
+  }
+  p { margin: 0 0 15px; max-width: 66ch; }
+  p:last-child { margin-bottom: 0; }
+  strong { font-weight: 700; }
+  em { font-style: italic; }
+
+  /* ---------- the rule callout ---------- */
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 22px 24px;
+    margin: 0 0 26px;
+  }
+  .rule-card .label {
+    font: 600 10.5px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-faint); display: block; margin-bottom: 11px;
+  }
+  .rule-card p {
+    margin: 0; font-size: 20px; line-height: 1.42; font-weight: 500;
+  }
+
+  /* ---------- tables ---------- */
+  .scroll { overflow-x: auto; margin-bottom: 22px; }
+  table {
+    width: 100%; border-collapse: collapse;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14.5px;
+  }
+  th {
+    text-align: left; vertical-align: bottom;
+    font: 600 10.5px/1.3 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--ink-faint);
+    padding: 0 14px 9px 0; border-bottom: 1.5px solid var(--ink);
+  }
+  td {
+    padding: 11px 14px 11px 0; border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top; color: var(--ink-soft);
+  }
+  td:first-child { color: var(--ink); font-weight: 600; }
+  th:last-child, td:last-child { padding-right: 0; }
+  tr:last-child td { border-bottom: none; }
+  .when { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .dur { font-size: 12.5px; color: var(--ink-faint); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .weight {
+    display: inline-block; font: 600 10.5px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: 5px 8px; border-radius: 3px; white-space: nowrap;
+  }
+  .w-4 { background: var(--accent-bg); color: var(--accent); }
+  .w-3 { background: var(--surface-2); color: var(--ink-soft); }
+  .w-1 { background: var(--stop-bg); color: var(--stop); }
+
+  /* ---------- lanes ---------- */
+  .lane {
+    display: grid; grid-template-columns: 42px 1fr; gap: 0 14px;
+    padding: 26px 0; border-top: 1px solid var(--rule);
+  }
+  .lane:first-of-type { border-top: 2px solid var(--ink); }
+  .num {
+    font: 600 12px/1.7 ui-monospace, Menlo, Consolas, monospace;
+    color: var(--accent); letter-spacing: .06em;
+    font-variant-numeric: tabular-nums;
+  }
+  .lane-tag {
+    grid-column: 2; margin: 7px 0 0;
+    font-size: 15.5px; font-style: italic; color: var(--accent);
+    max-width: 60ch;
+  }
+  .lane dl { margin: 14px 0 0; display: grid; gap: 10px; }
+  .lane dt {
+    font: 600 10.5px/1 ui-monospace, Menlo, Consolas, monospace;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+  .lane dd {
+    margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .lane dd b { color: var(--ink); font-weight: 650; }
+  .titles { font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 14.5px; }
+
+  /* ---------- go / stop test ---------- */
+  .test { display: grid; gap: 16px; margin-bottom: 22px; }
+  @media (min-width: 660px) { .test { grid-template-columns: 1fr 1fr; } }
+  .col { background: var(--surface); border: 1px solid var(--rule); padding: 20px 22px; }
+  .col.go   { border-top: 4px solid var(--go); }
+  .col.stop { border-top: 4px solid var(--stop); }
+  .col h4 {
+    font: 650 12px/1 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: .13em; text-transform: uppercase; margin: 0 0 14px;
+  }
+  .col.go h4 { color: var(--go); }
+  .col.stop h4 { color: var(--stop); }
+  .col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+  .col li {
+    position: relative; padding-left: 20px;
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14.5px; line-height: 1.5; color: var(--ink-soft);
+  }
+  .col li b { color: var(--ink); font-weight: 650; }
+  .col li::before {
+    position: absolute; left: 0; top: 0;
+    font: 600 13px/1.5 ui-monospace, Menlo, Consolas, monospace;
+  }
+  .col.go li::before   { content: "+"; color: var(--go); }
+  .col.stop li::before { content: "–"; color: var(--stop); }
+
+  /* ---------- targets ---------- */
+  .targets { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .target { background: var(--surface); padding: 16px 18px; display: flex; align-items: baseline; gap: 14px; }
+  .target .big {
+    font: 700 26px/1 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--accent); font-variant-numeric: tabular-nums; min-width: 64px;
+  }
+  .target span {
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14.5px; line-height: 1.45; color: var(--ink-soft);
+  }
+  .target span b { color: var(--ink); font-weight: 650; }
+
+  /* ---------- pull quote ---------- */
+  blockquote {
+    margin: 0 0 20px; padding: 24px 26px;
+    background: var(--surface); border: 1px solid var(--rule);
+    font-size: 18px; line-height: 1.55; font-style: italic; color: var(--ink);
+  }
+  blockquote p { margin: 0; max-width: none; }
+
+  /* ---------- notes ---------- */
+  .note {
+    padding-left: 16px; border-left: 2px solid var(--rule);
+    font-size: 15.5px; color: var(--ink-soft);
+  }
+  .note + .note { margin-top: 14px; }
+  .flag { color: var(--accent); font-weight: 700; }
+
+  footer {
+    margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font: 500 12.5px/1.6 ui-monospace, Menlo, Consolas, monospace;
+    color: var(--ink-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Companion to the role-alignment briefing</div>
+    <h1>The Non-State Search</h1>
+    <p class="standfirst">The state exams are filed and eligibility sits banked for twelve months. This is everything else — and how to run it so it doesn't quietly collapse back into $22/hr help desk.</p>
+    <div class="dateline">11 Aug 2026 · Sacramento region · six lanes</div>
+  </header>
+
+  <section>
+    <h2>Why the tier rule gets harder here</h2>
+    <p>State civil service makes the tier explicit. There are published classifications, and a <strong>B.S. in Computer Science literally satisfies the minimum qualification</strong> for IT Associate. You meet it or you don't. The degree does visible, mechanical work.</p>
+    <p>Nowhere else works like that. A private company has no "IT Associate" classification. So the rule has to be restated:</p>
+
+    <div class="rule-card">
+      <span class="label">The replacement rule</span>
+      <p>Your degree is worth the most where the employer is most bureaucratic.</p>
+    </div>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Employer type</th><th>Degree value</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>County · city · district · utility · transit</td>
+            <td><span class="weight w-4">Highest</span></td>
+            <td>Published classifications, degree-based minimum qualifications, scored supplementals — the same machinery as the state</td>
+          </tr>
+          <tr>
+            <td>Health systems · universities · large manufacturers</td>
+            <td><span class="weight w-4">High</span></td>
+            <td>Formal Analyst I/II/III ladders. "Bachelor's in CS or related" is a literal screen you pass and most applicants don't</td>
+          </tr>
+          <tr>
+            <td>Mid-size private with a real IT department</td>
+            <td><span class="weight w-3">Moderate</span></td>
+            <td>No ladder, but a degree plus production-floor background is an unusual combination</td>
+          </tr>
+          <tr>
+            <td>Small business · MSP · generic staffing req</td>
+            <td><span class="weight w-1">Lowest</span></td>
+            <td>Scored on years of experience alone. Where you lose to a six-year veteran at $24/hr</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><strong>So weight the search toward structured employers.</strong> That is what "apply at your tier" means once you leave CalCareers.</p>
+    <p>The failure mode is the bottom row. Generic MSP and staffing help-desk reqs are the easiest to find, the fastest to apply to, and the only ones where your degree counts for nothing. Volume there <em>feels</em> like progress.</p>
+  </section>
+
+  <section>
+    <h2>The six lanes</h2>
+
+    <div class="lane">
+      <div class="num">01</div>
+      <div>
+        <h3>Local public sector</h3>
+        <p class="lane-tag">The closest thing to state service, and the most under-used option you have.</p>
+        <dl>
+          <div><dt>Titles</dt><dd class="titles">IT Analyst I/II · IT Infrastructure Analyst · IT Applications Analyst · Systems Support Specialist · IT Technician II/III · Client Services Analyst</dd></div>
+          <div><dt>Employers</dt><dd class="titles">Sacramento County <b>(in flight)</b> · City of Sacramento · Placer · Yolo · El Dorado · SMUD · SacRT · Regional San · Sac Metro Fire</dd></div>
+          <div><dt>Where</dt><dd>GovernmentJobs.com covers most of them on one account. Set the alerts once.</dd></div>
+          <div><dt>Why it works</dt><dd>Identical degree-qualification mechanism to the state, a thinner applicant pool than private, single-site, and the driving requirement usually doesn't apply.</dd></div>
+          <div><dt>Watch</dt><dd>Hard cut-off dates. Supplemental questionnaires are <b>scored against the bulletin</b> — write them in classification language, not résumé language.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="num">02</div>
+      <div>
+        <h3>Health systems</h3>
+        <p class="lane-tag">The best long game on this page.</p>
+        <dl>
+          <div><dt>Titles</dt><dd class="titles">Desktop Support Analyst · IT Service Desk Analyst II · Endpoint Support Analyst · Clinical Systems Support · Applications Analyst I</dd></div>
+          <div><dt>Employers</dt><dd class="titles">UC Davis Health · Sutter · Kaiser · Dignity/CommonSpirit · Marshall Medical</dd></div>
+          <div><dt>Why it works</dt><dd>Health systems carry an enormous internal analyst tier. The documented path is to get in at desktop support on one campus, then transfer internally — and internal transfer converts at <b>32× the inbound application rate</b>, the strongest channel in the whole research file. Getting inside is the move; the entry title barely matters.</dd></div>
+          <div><dt>Watch</dt><dd><span class="flag">⚠</span> No verified Sacramento band was confirmed for entry desktop roles — check before assuming. UC Davis Health is <b>UC, not state civil service</b>: separate portal, separate rules, unrelated to your CalCareers eligibility.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="num">03</div>
+      <div>
+        <h3>Education, non-state</h3>
+        <p class="lane-tag">Two of these already know your name.</p>
+        <dl>
+          <div><dt>Titles</dt><dd class="titles">Senior IT Technician · Lab / Microcomputer Support · Ed Tech Systems Support Specialist · IT User Support Technician</dd></div>
+          <div><dt>Employers</dt><dd class="titles">Los Rios CCD · FCUSD · Twin Rivers · EGUSD · San Juan · SCUSD · Natomas USD · SCOE</dd></div>
+          <div><dt>Where</dt><dd>EDJOIN, district sites directly, and schooljobs.com for Los Rios.</dd></div>
+          <div><dt>Why it works</dt><dd>Los Rios is the standout — you're an SCC alum, a former STEM tutor there, <b>and</b> a current classified school employee. FCUSD already put you in front of a four-person panel. Neither is a cold application.</dd></div>
+          <div><dt>Watch</dt><dd><span class="flag">⚠</span> The licence constraint bites hardest here. Filter out anything multi-site, "assigned territory," or "reliable personal vehicle." Single-campus and district-office roles are fine.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="num">04</div>
+      <div>
+        <h3>Industrial, food-ag, manufacturing</h3>
+        <p class="lane-tag">Your proven converter. The final two at Superior Farms came from this lane.</p>
+        <dl>
+          <div><dt>Titles</dt><dd class="titles">Manufacturing IT Support Technician · Plant IT Technician · IT/OT Technician · Site IT Technician · Production Systems Technician · MES Technician</dd></div>
+          <div><dt>Employers</dt><dd class="titles">Blue Diamond Growers · Nippon Shokken · Pacific Coast Producers · Sunsweet · Raley's · Nugget · UNFI · Sysco — plus the California League of Food Producers member list</dd></div>
+          <div><dt>Why it works</dt><dd>"Manufacturing experience preferred" repels the entire bootcamp and CS-grad pool <b>before you're compared to them</b>. Your cold-storage and food-safety background is a scored asset here and worth nothing anywhere else.</dd></div>
+          <div><dt>Watch</dt><dd>Mostly <b>company-direct and unindexed</b> — these don't reliably reach Indeed. Go to careers pages. Verify the commute before you invest.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="num">05</div>
+      <div>
+        <h3>Distribution and logistics</h3>
+        <p class="lane-tag">Hires continuously, and shift work is normal.</p>
+        <dl>
+          <div><dt>Titles</dt><dd class="titles">IT Support Technician II · Deskside Support · Warehouse Systems Support · FC IT Tech</dd></div>
+          <div><dt>Employers</dt><dd class="titles">Amazon · UPS · FedEx · Walmart DC · Target DC · UNFI</dd></div>
+          <div><dt>Why it works</dt><dd>Your throughput and deadline record reads as directly relevant rather than incidental. Amazon Tech II sits around <b>$31/hr</b>.</dd></div>
+          <div><dt>Watch</dt><dd>The Tier 1 version of these roles pays near <b>$25/hr</b> — push for the Tech II classification. Check transit.</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="lane">
+      <div class="num">06</div>
+      <div>
+        <h3>Contract-to-hire agencies</h3>
+        <p class="lane-tag">Your fastest lane — and the one where this whole plan is most likely to break.</p>
+        <dl>
+          <div><dt>Firms</dt><dd class="titles">Robert Half <b>(live relationship)</b> · Insight Global · Randstad · TEKsystems · Apex Systems · Motion Recruitment</dd></div>
+          <div><dt>Why it works</dt><dd>Roughly <b>35% of temps convert to permanent</b>, against ~0.5% of cold applications becoming hires. It's your demonstrated channel — Natomas came from here.</dd></div>
+          <div><dt>Watch</dt><dd><span class="flag">⚠</span> <b>This is exactly where tier discipline breaks.</b> A recruiter routes you on the band you state. Say "IT support" and you land in the $22–24/hr queue. Say the band out loud, every time, to every firm.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The ten-second test</h2>
+    <p>Run this on a posting before spending any time on it.</p>
+
+    <div class="test">
+      <div class="col go">
+        <h4>Apply if any of these</h4>
+        <ul>
+          <li>A <b>level in the title</b> — I/II/III, Senior, Tech II. A level means a real ladder and a real band.</li>
+          <li><b>"Bachelor's degree required or preferred."</b> The degree is doing work; most applicants don't have one.</li>
+          <li><b>Analyst · Administrator · Specialist · Engineer</b> in the title, not just "Technician."</li>
+          <li>A <b>domain qualifier</b> — manufacturing, plant, production, clinical, campus, endpoint, systems.</li>
+          <li>A posted pay floor of <b>$28/hr or better</b>.</li>
+        </ul>
+      </div>
+      <div class="col stop">
+        <h4>Skip if</h4>
+        <ul>
+          <li><b>"Help Desk Technician"</b> or "Tier 1" with no level and no domain.</li>
+          <li>Pay floor <b>under $25/hr</b> — below the Sacramento median for this work.</li>
+          <li><b>"3–5 years required"</b> with no degree-substitution clause.</li>
+          <li>Requires a <b>driver's licence, personal vehicle, or travel between sites</b> — until the licence lands.</li>
+          <li>A staffing req with <b>no named client and no band</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <span class="label">The habit that's hardest to build</span>
+      <p>An easy application is not a cheap application. It costs the same attention as a good one and returns almost nothing.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Weekly rhythm</h2>
+    <p>Built around an 8:15–2:45 shift: phone during the day, laptop at night.</p>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>When</th><th>What</th><th>Time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="when">Mon · phone</td><td>Portal sweep — GovernmentJobs, EDJOIN, health systems. <strong>Queue, don't apply.</strong></td><td class="dur">20 min</td></tr>
+          <tr><td class="when">Tue · laptop</td><td>One structured application, full supplemental, done properly</td><td class="dur">45–60 min</td></tr>
+          <tr><td class="when">Wed · phone</td><td>Two company-direct touches in the industrial lane</td><td class="dur">15 min</td></tr>
+          <tr><td class="when">Thu · laptop</td><td>One structured application, plus two fast ones from the queue</td><td class="dur">60 min</td></tr>
+          <tr><td class="when">Fri · phone</td><td>One agency contact, by name. Rotate firms.</td><td class="dur">10 min</td></tr>
+          <tr><td class="when">Sat</td><td>Skill-up block, plus one deep application</td><td class="dur">90 min</td></tr>
+          <tr><td class="when">Sun</td><td>Update the tracker, build next week's queue</td><td class="dur">20 min</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Volume targets are capped on purpose — the constraint is quality, not effort:</p>
+
+    <div class="targets">
+      <div class="target"><span class="big">4–6</span><span>applications per week. <b>Not twenty.</b></span></div>
+      <div class="target"><span class="big">3+</span><span>of those must be <b>structured-employer, tier-correct</b> roles</span></div>
+      <div class="target"><span class="big">≤5</span><span>cold applications per week, and <b>only</b> where you can attach a human name</span></div>
+      <div class="target"><span class="big">0</span><span><b>below-tier applications.</b> This is the rule the whole plan rests on</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What to say</h2>
+    <p>One sentence — for recruiters, hiring managers, and any free-text field:</p>
+    <blockquote>
+      <p>CS degree, ITIL 4 Foundation, A+ Core 1, with hands-on enterprise device support — Windows and macOS imaging, deployment and break-fix at district scale — plus production-floor and cold-storage operations experience. I'm looking at Tier 2/3 systems and analyst-track roles, single site, $30+/hr, open to contract or direct.</p>
+    </blockquote>
+    <p>Three things it does deliberately: leads with the credential, <strong>names the band</strong>, and puts <em>systems</em> in the recruiter's ear rather than <em>support</em>.</p>
+    <p><strong>On the gap Brooke named.</strong> "More experience with networking and systems" points at a specific bridge. Don't chase pure network engineering — that's a longer road. Chase the <strong>systems</strong> half: endpoint administration, device management, imaging and deployment at fleet scale, Jamf and Intune. It's adjacent to what you already do, it's a real tier above technician, and it's the shortest honest path from where you are to where the postings are.</p>
+  </section>
+
+  <section>
+    <h2>Tracking, and what's still unknown</h2>
+    <p>Every application goes in the tracker — including the fast ones. Three columns carry this plan:</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Column</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>lane</td><td>Which of the six. Count them at month end — if lane 6 dominates and lanes 1–2 are empty, the plan has quietly reverted to the old search</td></tr>
+          <tr><td>next_action</td><td>An application with no next action is a lottery ticket</td></tr>
+          <tr><td>contact</td><td>A human name. Applications with one convert at a different rate than applications without one</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Review monthly, not weekly.</strong> Three data points is noise. At thirty days the question is which lanes produced a <em>human response</em> — not which produced the most submissions.</p>
+
+    <p class="note"><span class="flag">⚠</span> No verified pay band for entry desktop roles at Sacramento health systems. Worth twenty minutes on the UCDH, Sutter and Kaiser careers pages before committing effort to lane 2.</p>
+    <p class="note"><span class="flag">⚠</span> Commute reality for lanes 4 and 5 stays unresolved until the licence lands. Several of the best industrial employers sit in Dixon, West Sacramento and Woodland.</p>
+    <p class="note">The state lane runs 2–4 months, which makes these lanes the <b>fast path, not the backup</b>. If a lane 6 contract lands first, take it — it costs you nothing, and the exam eligibility sits banked for twelve months regardless.</p>
+  </section>
+
+  <footer>
+    Sources and caveats live in sources.md · Verified facts in profile/facts.md<br>
+    Full role analysis in search/role-alignment-briefing.md
+  </footer>
+
+</div>
